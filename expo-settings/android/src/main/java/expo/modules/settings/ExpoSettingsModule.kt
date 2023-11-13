@@ -2,6 +2,7 @@ package expo.modules.settings
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.core.os.bundleOf
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 
@@ -9,8 +10,11 @@ class ExpoSettingsModule : Module() {
   override fun definition() = ModuleDefinition {
     Name("ExpoSettings")
 
+    Events("onChangeTheme")
+
     Function("setTheme") { theme: String ->
       getPreferences().edit().putString("theme", theme).commit()
+      this@ExpoSettingsModule.sendEvent("onChangeTheme", bundleOf("theme" to theme))
     }
 
     Function("getTheme") {
