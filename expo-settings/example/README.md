@@ -1,3 +1,5 @@
+[Expo - Tutorial: Creating a native module](https://docs.expo.dev/modules/native-module-tutorial/)
+
 ## Logging from native module
 
 We can print logs in native code (Kotlin for example) too.
